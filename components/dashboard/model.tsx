@@ -11,7 +11,7 @@ const App: React.FC = () => {
   return (
     <>
       <div onClick={() => setModal2Open(true)}>
-      <DeleteOutlined />
+        <DeleteOutlined />
         {/* Delete */}
       </div>
       <Modal
@@ -21,7 +21,6 @@ const App: React.FC = () => {
         onOk={() => {
           setModal2Open(false);
           setModal1Open(true);
-          
         }}
         onCancel={() => setModal2Open(false)}
         okText="Confirm"

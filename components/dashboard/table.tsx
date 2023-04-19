@@ -1,8 +1,8 @@
 import React from "react";
 import { Space, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import { DeleteOutlined, EditOutlined, EditTwoTone } from "@ant-design/icons";
-import Model from './model'
+import { EditOutlined } from "@ant-design/icons";
+import Model from "./model";
 
 interface DataType {
   key: string;
@@ -13,16 +13,15 @@ interface DataType {
   status: string[];
 }
 function showMsg() {
-  console.log("Clicked")
+  console.log("Clicked");
 }
 
 const columns: ColumnsType<DataType> = [
-    {
-        title: "PRIORITY",
-        dataIndex: "priority",
-        key: "priority",
-
-    },
+  {
+    title: "PRIORITY",
+    dataIndex: "priority",
+    key: "priority",
+  },
   {
     title: "TYPE",
     dataIndex: "type",
@@ -65,13 +64,14 @@ const columns: ColumnsType<DataType> = [
     key: "action",
     render: (_, record) => (
       <Space size="middle">
-        <div><EditOutlined /></div>
-
-        
+        <div>
+          <EditOutlined />
+        </div>
         {/* <EditTwoTone/> */}
         {/* <a>Edit {record.taskid}</a> */}
-        <div onClick={showMsg}><Model/></div>
-        
+        <div onClick={showMsg}>
+          <Model />
+        </div>
       </Space>
     ),
   },
