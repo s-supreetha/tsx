@@ -4,3 +4,10 @@
     font-size: 2rem;
     padding: 1rem;
 }
+
+.chart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: transparent;
+}

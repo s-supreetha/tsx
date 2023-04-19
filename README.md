@@ -2,13 +2,7 @@
 
 Folder structure
 ```
-feature_name
-	|
-	---- layout.tsx (your fully commented tsx file that uses antd)
-	|
-	---- index.ts (the file that calls the layout tsx, showcasing how the props need to be defined for the layout that you created)
-	|
-	---- README.md (the file that describes any extra setup, bash commands)
-	|
-	---- Layout.module.css (if necessary)
-```
+1. Create/Add LineChart and PieChart component inside the components folder 
+2. Accordingly add your imports
+3. Add the styles in Baselayout.module.css (classname: .chart)
+4. Modify the index.tsx (Use above created components)
