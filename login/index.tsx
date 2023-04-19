@@ -19,8 +19,8 @@ const App: React.FC = () => {
         </Header>
       </div>
       <div className={Styles.side_text}>
-        <h1 style={{ fontSize: 49 }}>HU</h1>
-        <h3>PROJECT TRACKER</h3>
+        <h1 style={{ fontSize: 49 ,margin:0}}>HU</h1>
+        <h3 style={{margin:0}}>PROJECT TRACKER</h3>
       </div>
       <div className={Styles.side_img} >
         <Image src={`/undrawSE.png`} alt="Undraw Software Engineer" width={380} height={277}
@@ -53,10 +53,10 @@ const App: React.FC = () => {
               label="Password"
               name="password"
               rules={[{ required: true, message: 'This field is mandatory' }]}
-              >
+            >
               <Input.Password />
 
-              <hr className={Styles.hr}/>
+              <hr />
             </Form.Item>
             <div className={Styles.btns}>
               <Form.Item >

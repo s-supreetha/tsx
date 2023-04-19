@@ -29,7 +29,7 @@
 .content {
     box-sizing: border-box;
     position: absolute;
-    width: 580px;
+    width: 499px;
     height: 445px;
     left: 756px;
     top: 269px;
@@ -44,7 +44,7 @@
     position: absolute;
     width: 186px;
     height: 186px;
-    left: 953px;
+    left: 905px;
     top: 172px;
 
     background: #ED762F;
@@ -55,7 +55,7 @@
     width: 331px;
     height: 101px;
     left: 228px;
-    top: 288px;
+    top: 282px;
 
     font-family: 'Roboto';
     font-style: normal;
@@ -63,7 +63,7 @@
     font-size: 21px;
 
     line-height: 50px;
-
+    margin: 0px;
     display: flex;
     /* align-items: center; */
     flex-direction: column;
@@ -75,18 +75,17 @@
     width: 380px;
     height: 277px;
     left: 202px;
-    top: 420px;
+    top: 434px;
 
 }
 
 .form_login {
     margin: 6rem 2rem;
-
 }
 
 .forms {
     box-sizing: border-box;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 
     /* Auto layout */
 
@@ -163,6 +162,7 @@
 
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
     border-radius: 2px;
+    width: 180px;
 }
 
 .reset {
@@ -171,10 +171,12 @@
 
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
     border-radius: 2px;
+    width: 180px
     ;
 }
 
 .btns {
+    margin-left: 7rem;
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
@@ -186,15 +188,15 @@
     height: 36px;
 }
 
-.password {
-    /* width: 180px;
-    height: 22px; */
 
-}
 
 .hr{
     border-radius: 28px;
     margin: 1rem;
     padding: 1px;
     background-color: white;
+}
+
+.password {
+    color: #FFFFFF;
 }
