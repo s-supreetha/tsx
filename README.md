@@ -2,7 +2,7 @@
 
 Folder structure
 ```
-1. npm install @antdesign-plots
+1. npm install @ant-design/plots
 2. Create/Add LineChart and PieChart component inside the components folder 
 3. Accordingly add your imports
 4. Add the styles in Baselayout.module.css (classname: .chart)
