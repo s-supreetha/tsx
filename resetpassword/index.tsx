@@ -1,28 +1,34 @@
-import Styles from '@/styles/login.module.css'
-import { UserOutlined } from '@ant-design/icons';
-import { Alert, Avatar, Button, Form, Input, } from 'antd';
+import Styles from '@/styles/resetPassword.module.css'
+import { UserOutlined} from '@ant-design/icons';
+import { Alert, Avatar, Button, ConfigProvider, Form, Input, Result, } from 'antd';
 import React, { useState } from 'react';
 import { Layout, Menu, Image } from 'antd';
 import Link from 'next/link';
 const { Header, Content, Footer } = Layout;
 
-const App: React.FC = () => {
+const ResetPassword: React.FC = () => {
   const [form] = Form.useForm();
 
+  const handleReset = () => {
+    form.resetFields();
+  }
 
-  // Password verification
+   // Password verification
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  
+  const [pwdConf,setPwdConf] = useState("");
+
   const checkPassword = () => {
     if (password !== 'abcde') {
       setErrorMsg('Incorrect Password or Username!')
+      setPwdConf('')
       return
     }
+    setPwdConf('Success')
     setErrorMsg('')
-    // alert('Password is Correct')
 
   }
+
 
   return (
     <Layout className="layout">
@@ -46,12 +52,7 @@ const App: React.FC = () => {
         <Image src={`/undrawSE.png`} alt="Undraw Software Engineer" width={380} height={277}
         />
       </div>
-      <div >
-        <Avatar className={Styles.login_logo} size={186} icon={<UserOutlined />} />
-
-      </div>
-
-
+     
       {/* Content */}
       <Content className={Styles.content}>
 
@@ -67,7 +68,7 @@ const App: React.FC = () => {
 
           >
             {/* The color of the text need to be changed to white */}
-            <Form.Item
+            <Form.Item className={Styles.form_text_box}
               label="User Name"
               name="username"
               rules={[{ required: true, message: 'This field is mandatory' }]}
@@ -76,12 +77,30 @@ const App: React.FC = () => {
               <hr />
             </Form.Item>
             {/* The color of the text need to be changed to white */}
-            <Form.Item className={Styles.password}
+            <Form.Item className={Styles.form_text_box}
               label="Password"
               name="password"
               rules={[{ required: true, message: 'This field is mandatory' }]}
             >
               <Input.Password onChange={e => setPassword(e.target.value)} />
+              <hr />
+            </Form.Item>
+            <Form.Item className={Styles.form_text_box}
+              label="New Password"
+              name="newpassword"
+              rules={[{ required: true, message: 'This field is mandatory' }]}
+            >
+              <Input.Password />
+              <hr />
+            </Form.Item>
+            <Form.Item className={Styles.form_text_box}
+              label="Confirm Password"
+              name="confirmpassword"
+              rules={[{ required: true, message: 'This field is mandatory' }]}
+
+            
+            >
+              <Input.Password />
               <hr />
             </Form.Item>
             <div className={Styles.btns}>
@@ -97,12 +116,21 @@ const App: React.FC = () => {
                 {
                   errorMsg && ( <Alert className={Styles.alert} message={errorMsg} type="warning" showIcon closable />
                   )
+                }{
+                  pwdConf &&(<Result className={Styles.popupconfir}
+                    status="success"
+                    title="Your Password has been changed successfully"
+                    extra={[ <Link href='/login/' >
+                      <Button key="confirm">OK</Button></Link>
+                    ]}
+                  />)
+
                 }
               </Form.Item>
             </div>
             <Form.Item>
-              <Link href='/resetpassword/' >
-                <p className={Styles.forget}>Click here to change password  </p>
+            <Link href='/login/' >
+               <p className={Styles.forget}>Click here to Login  </p> 
               </Link>
             </Form.Item>
           </Form>
@@ -112,4 +140,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default ResetPassword;
