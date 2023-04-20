@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+model Priority {
+  id    Int     @id @default(autoincrement())
+  type  String
+  Epic  Epic[]
+  Issue Issue[]
+}
+
+model Type {
+  id    Int     @id @default(autoincrement())
+  type  String
+  epics Epic[]
+  Issue Issue[]
+}
+
+model Status {
+  id    Int     @id @default(autoincrement())
+  type  String
+  Epic  Epic[]
+  Issue Issue[]
+}
+
+model User {
+  id         Int    @id @default(autoincrement())
+  first_name String
+  last_name  String
+  role       String
+  email      String @unique
+  password   String
+  teamId     Int?
+  team       Team?  @relation(fields: [teamId], references: [id])
+}
+
+model Team {
+  id        Int    @id @default(autoincrement())
+  name      String @unique
+  projectId Int?
+  project Project? @relation(fields: [projectId], references: [id])
+  users     User[]
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  start_date  DateTime
+  end_date    DateTime
+  ownerId     Int?
+  epics       Epic[]
+  teams Team[]
+}
+
+model Epic {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  assigneeId  Int
+  reporterId  Int
+  typeId      Int?       @default(1)
+  type        Type?     @relation(fields: [typeId], references: [id])
+  statusId    Int?       @default(1)
+  status      Status?   @relation(fields: [statusId], references: [id])
+  priorityId  Int?       @default(1)
+  priority    Priority? @relation(fields: [priorityId], references: [id])
+  projectId   Int?
+  project     Project?  @relation(fields: [projectId], references: [id])
+  issues      Issue[]
+}
+
+model Issue {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String
+  assigneeId  Int
+  reporterId  Int
+  typeId      Int?      @default(1)
+  type        Type?     @relation(fields: [typeId], references: [id])
+  statusId    Int?       @default(1)
+  status      Status?   @relation(fields: [statusId], references: [id])
+  priorityId  Int?       @default(1)
+  priority    Priority? @relation(fields: [priorityId], references: [id])
+  start_date  DateTime
+  end_date    DateTime
+  epicId      Int?
+  epic        Epic?     @relation(fields: [epicId], references: [id])
+}
+
+model Auditlog {
+  id Int @id @default(autoincrement())
+  method String?
+  changes String?
+  actionTable String?
+  start_date DateTime?
+  end_date DateTime?
+  entityId Int?
+  statusCode Int?
+}
